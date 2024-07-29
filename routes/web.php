@@ -11,6 +11,9 @@ Route::get('/pdf', static function () {
     $html = view('pdf.example')->render();
 
     $pdf = Browsershot::html($html)
+        ->addChromiumArguments([
+            'headless=shell'
+        ])
         ->pdf();
 
     return response($pdf)
