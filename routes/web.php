@@ -11,6 +11,7 @@ Route::get('/pdf', static function () {
     $html = view('pdf.example')->render();
 
     $pdf = Browsershot::html($html)
+        ->noSandbox()
         ->pdf();
 
     return response($pdf)
